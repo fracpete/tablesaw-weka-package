@@ -55,7 +55,8 @@ public class TablesawCsvSaver
    *         explorer/experimenter gui
    */
   public String globalInfo() {
-    return "CSV saver using the Tablesaw dataframe library.";
+    return "CSV saver using the Tablesaw dataframe library.\n"
+      + "https://jtablesaw.github.io/tablesaw/";
   }
 
   /**

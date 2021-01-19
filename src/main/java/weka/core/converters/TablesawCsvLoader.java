@@ -55,7 +55,8 @@ public class TablesawCsvLoader
    * 			displaying in the explorer/experimenter gui
    */
   public String globalInfo() {
-    return "Reads CSV files using the Tablesaw library.";
+    return "Reads CSV files using the Tablesaw library.\n"
+      + "https://jtablesaw.github.io/tablesaw/";
   }
 
   /**

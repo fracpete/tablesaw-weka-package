@@ -1,5 +1,7 @@
 # tablesaw-weka-package
-Weka package that takes advantage of the tablesaw Java dataframe and visualization library.
+Weka package that takes advantage of the [tablesaw](https://jtablesaw.github.io/tablesaw/) 
+Java dataframe and visualization library.
+
 
 ## Tablesaw dependencies
 
