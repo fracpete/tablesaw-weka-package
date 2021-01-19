@@ -14,9 +14,9 @@ Preparation
   version, e.g.:
 
   ```
-  Version=2021.1.13
-  Date=2021-01-13
-  PackageURL=https://github.com/fracpete/tablesaw-weka-package/releases/download/v2021.1.13/tablesaw-2021.1.13.zip
+  Version=2021.1.19
+  Date=2021-01-19
+  PackageURL=https://github.com/fracpete/tablesaw-weka-package/releases/download/v2021.1.19/tablesaw-2021.1.19.zip
   ```
 
 * Commit/push all changes
@@ -25,13 +25,13 @@ Preparation
 Weka package
 ------------
 
-* Run the following command to generate the package archive for version `2021.1.13`:
+* Run the following command to generate the package archive for version `2021.1.19`:
 
   ```
-  ant -f build_package.xml -Dpackage=tablesaw-2021.1.13 clean make_package
+  ant -f build_package.xml -Dpackage=tablesaw-2021.1.19 clean make_package
   ```
 
-* Create a release tag on github (v2021.1.13)
+* Create a release tag on github (v2021.1.19)
 * add release notes
 * upload package archive from `dist`
 

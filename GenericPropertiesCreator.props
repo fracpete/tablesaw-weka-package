@@ -1,0 +1,10 @@
+# Customises the list of options given by the GenericObjectEditor
+# for various superclasses.
+
+# the column operations
+weka.core.tablesaw.ColumnOperation=\
+  weka.core.tablesaw
+
+# the row operations
+weka.core.tablesaw.RowOperation=\
+ weka.core.tablesaw

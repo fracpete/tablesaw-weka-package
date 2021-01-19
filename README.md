@@ -13,3 +13,71 @@ java -jar bootstrapp-0.1.5-spring-boot.jar --dependency tech.tablesaw:tablesaw-c
 ```
 
 Copy all jars from `./out/target/lib` into the projects `lib` directory.
+
+
+## Plugins
+
+### Input/Output
+
+* Loader
+
+  ```
+  TODO
+  ``` 
+  
+* Saver
+
+  ```
+  TODO
+  ```
+  
+### Filters
+
+The following batch filters and their operations are available:
+
+* `weka.filters.unsupervised.attribute.Tablesaw`
+
+  * `PassThrough` - dummy, just passes through the data
+  
+* `weka.filters.unsupervised.instance.Tablesaw`
+
+  * `PassThrough` - dummy, just passes through the data
+  * `SampleN` - generates a sub-sample of size N
+  * `SampleX` - generates a sub-sample of proportion X (0.0-1.0)
+  * ...
+
+**Note:** Since the data needs to be converted into Tablesaw's dataframe format,
+the data may still get modified (e.g., change in attribute types), despite the 
+`PassThrough` operation being selected.
+
+
+## Releases
+
+* [????.??.??](https://github.com/fracpete/matlab-weka-package/releases/download/v????.??.??/tablesaw-????.??.??.zip)
+
+
+## Maven
+
+Use the following dependency in your `pom.xml`:
+
+```xml
+    <dependency>
+      <groupId>com.github.fracpete</groupId>
+      <artifactId>tablesaw-weka-package</artifactId>
+      <version>????.??.??</version>
+      <type>jar</type>
+      <exclusions>
+        <exclusion>
+          <groupId>nz.ac.waikato.cms.weka</groupId>
+          <artifactId>weka-dev</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+```
+
+
+## How to use packages
+
+For more information on how to install the package, see:
+
+https://waikato.github.io/weka-wiki/packages/manager/

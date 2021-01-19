@@ -149,7 +149,7 @@ public class TablesawUtils {
     ZoneId		zoneId;
 
     // header
-    columns = new ArrayList<>();
+    columns = new ArrayList<Column<?>>();
     for (i = 0; i < instances.numAttributes(); i++) {
       att = instances.attribute(i);
       if (att.isDate())
