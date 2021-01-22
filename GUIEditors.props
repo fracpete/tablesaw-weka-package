@@ -10,4 +10,6 @@
 # author:  FracPete (fracpete at waikato dot ac dot nz)
 
 weka.core.tablesaw.ColumnOperation=weka.gui.GenericObjectEditor
+weka.core.tablesaw.ColumnOperation[]=weka.gui.GenericArrayEditor
 weka.core.tablesaw.RowOperation=weka.gui.GenericObjectEditor
+weka.core.tablesaw.RowOperation[]=weka.gui.GenericArrayEditor
