@@ -35,6 +35,8 @@ import tech.tablesaw.columns.numbers.FloatColumnType;
 import tech.tablesaw.columns.numbers.IntColumnType;
 import tech.tablesaw.columns.numbers.LongColumnType;
 import tech.tablesaw.columns.numbers.ShortColumnType;
+import tech.tablesaw.columns.strings.StringColumnType;
+import tech.tablesaw.columns.strings.TextColumnType;
 import tech.tablesaw.columns.times.TimeColumnType;
 
 import java.time.LocalDateTime;
@@ -72,6 +74,39 @@ public class TablesawUtils {
   }
 
   /**
+   * Returns the column type.
+   *
+   * @param type	the column type
+   * @return		the type
+   */
+  public static String getColumnType(ColumnType type) {
+    // numeric
+    if (type instanceof DoubleColumnType)
+      return "nd";
+    if (type instanceof FloatColumnType)
+      return "nf";
+    if (type instanceof ShortColumnType)
+      return "ns";
+    if (type instanceof IntColumnType)
+      return "ni";
+    if (type instanceof LongColumnType)
+      return "nl";
+    // date-like
+    if (type instanceof TimeColumnType)
+      return "dt";
+    if (type instanceof DateColumnType)
+      return "dd";
+    if (type instanceof DateTimeColumnType)
+      return "ddt";
+    // string-like
+    if (type instanceof TextColumnType)
+      return "st";
+    if (type instanceof StringColumnType)
+      return "ss";
+    return "";
+  }
+
+  /**
    * Checks whether the column is date-like.
    *
    * @param type	the column type
@@ -100,10 +135,13 @@ public class TablesawUtils {
     int				n;
     double[]			values;
     Row				row;
+    String[]			colTypes;
 
     // header
     atts = new ArrayList<Attribute>();
+    colTypes = new String[table.columnCount()];
     for (i = 0; i < table.columnCount(); i++) {
+      colTypes[i] = getColumnType(table.column(i).type());
       if (isNumeric(table.column(i).type()))
         atts.add(new Attribute(table.column(i).name()));
       else if (isDateLike(table.column(i).type()))
@@ -119,20 +157,29 @@ public class TablesawUtils {
       row    = table.row(n);
       for (i = 0; i < row.columnCount(); i++) {
         values[i] = Utils.missingValue();
-	if (result.attribute(i).isDate()) {
-          if (table.column(i).type() == ColumnType.LOCAL_DATE_TIME)
-	    values[i] = Date.from(row.getDateTime(i).toInstant(ZoneOffset.UTC)).getTime();
-          else if (table.column(i).type() == ColumnType.LOCAL_DATE)
-	    values[i] = row.getDate(i).toEpochDay() * 24 * 60 * 60 * 1000;
-          else if (table.column(i).type() == ColumnType.LOCAL_DATE)
-	    values[i] = row.getTime(i).toNanoOfDay() / 1000 / 1000;
-	}
-	else if (result.attribute(i).isNumeric()) {
+	// numeric
+        if (colTypes[i].equals("nd"))
           values[i] = row.getDouble(i);
-	}
-	else {
+        else if (colTypes[i].equals("ni"))
+          values[i] = row.getInt(i);
+        else if (colTypes[i].equals("nf"))
+          values[i] = row.getFloat(i);
+        else if (colTypes[i].equals("ns"))
+          values[i] = row.getShort(i);
+        else if (colTypes[i].equals("nl"))
+          values[i] = row.getLong(i);
+        // string-like
+        else if (colTypes[i].equals("ss"))
           values[i] = result.attribute(i).addStringValue(row.getString(i));
-	}
+        else if (colTypes[i].equals("st"))
+          values[i] = result.attribute(i).addStringValue(row.getText(i));
+        // date-like
+        else if (colTypes[i].equals("ddt"))
+	  values[i] = Date.from(row.getDateTime(i).toInstant(ZoneOffset.UTC)).getTime();
+	else if (colTypes[i].equals("dd"))
+	  values[i] = row.getDate(i).toEpochDay() * 24 * 60 * 60 * 1000;
+	else if (colTypes[i].equals("dt"))
+	  values[i] = row.getTime(i).toNanoOfDay() / 1000 / 1000;
       }
       result.add(new DenseInstance(1.0, values));
     }
