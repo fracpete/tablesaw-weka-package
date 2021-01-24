@@ -28,7 +28,7 @@ import tech.tablesaw.api.Table;
  * @author FracPete (fracpete at waikato dot ac dot nz)
  */
 public class PassThrough
-  extends AbstractRowAndColumnOperation {
+  extends AbstractTableOperation {
 
   private static final long serialVersionUID = -1582427936858479910L;
 
@@ -44,24 +44,13 @@ public class PassThrough
   }
 
   /**
-   * Processes the columns.
-   *
-   * @param table the table to work on
-   * @return the updated table
-   */
-  @Override
-  public Table processColumns(Table table) {
-    return table;
-  }
-
-  /**
    * Processes the rows.
    *
    * @param table the table to work on
    * @return the updated table
    */
   @Override
-  public Table processRows(Table table) {
+  public Table processTable(Table table) {
     return table;
   }
 }

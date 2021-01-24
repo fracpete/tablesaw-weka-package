@@ -14,7 +14,7 @@
  */
 
 /*
- * ColumnOperation.java
+ * Operation.java
  * Copyright (C) 2021 University of Waikato, Hamilton, NZ
  */
 
@@ -26,11 +26,11 @@ import weka.core.OptionHandler;
 import java.io.Serializable;
 
 /**
- * Interface for column operations.
+ * Interface for table operations.
  *
  * @author FracPete (fracpete at waikato dot ac dot nz)
  */
-public interface ColumnOperation
+public interface TableOperation
   extends Serializable, OptionHandler {
 
   /**
@@ -42,10 +42,10 @@ public interface ColumnOperation
   public String globalInfo();
 
   /**
-   * Processes the columns.
+   * Processes the table.
    *
    * @param table	the table to work on
    * @return		the updated table
    */
-  public abstract Table processColumns(Table table);
+  public abstract Table processTable(Table table);
 }

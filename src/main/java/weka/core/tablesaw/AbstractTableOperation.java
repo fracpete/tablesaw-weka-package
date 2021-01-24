@@ -14,7 +14,7 @@
  */
 
 /*
- * AbstractColumnOperation.java
+ * AbstractTableOperation.java
  * Copyright (C) 2021 University of Waikato, Hamilton, NZ
  */
 
@@ -30,14 +30,14 @@ import java.util.List;
 import java.util.Vector;
 
 /**
- * Ancestor for column operations.
+ * Ancestor for table operations.
  *
  * @author FracPete (fracpete at waikato dot ac dot nz)
  */
-public abstract class AbstractColumnOperation
-  implements ColumnOperation {
+public abstract class AbstractTableOperation
+  implements TableOperation {
 
-  private static final long serialVersionUID = -8811838214860518889L;
+  private static final long serialVersionUID = -546361119679794433L;
 
   /**
    * Returns an enumeration describing the available options.
@@ -79,10 +79,10 @@ public abstract class AbstractColumnOperation
   }
 
   /**
-   * Processes the columns.
+   * Processes the table.
    *
    * @param table	the table to work on
    * @return		the updated table
    */
-  public abstract Table processColumns(Table table);
+  public abstract Table processTable(Table table);
 }

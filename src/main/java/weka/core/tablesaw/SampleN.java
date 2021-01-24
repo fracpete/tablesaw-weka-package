@@ -35,7 +35,7 @@ import java.util.Vector;
  * @author FracPete (fracpete at waikato dot ac dot nz)
  */
 public class SampleN
-  extends AbstractRowOperation {
+  extends AbstractTableOperation {
 
   private static final long serialVersionUID = 2062384379312131809L;
 
@@ -137,13 +137,13 @@ public class SampleN
   }
 
   /**
-   * Processes the rows.
+   * Processes the table.
    *
    * @param table the table to work on
    * @return the updated table
    */
   @Override
-  public Table processRows(Table table) {
+  public Table processTable(Table table) {
     if (m_Size <= 0)
       return table;
 

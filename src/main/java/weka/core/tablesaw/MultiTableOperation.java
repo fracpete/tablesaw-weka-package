@@ -14,7 +14,7 @@
  */
 
 /*
- * MultiColumnOperation.java
+ * MultiTableOperation.java
  * Copyright (C) 2021 University of Waikato, Hamilton, NZ
  */
 
@@ -30,17 +30,17 @@ import java.util.List;
 import java.util.Vector;
 
 /**
- * Applies multiple column operations.
+ * Applies multiple table operations sequentially.
  *
  * @author FracPete (fracpete at waikato dot ac dot nz)
  */
-public class MultiColumnOperation
-  extends AbstractColumnOperation {
+public class MultiTableOperation
+  extends AbstractTableOperation {
 
   private static final long serialVersionUID = 2062384379312131809L;
 
   /** the operations. */
-  protected ColumnOperation[] m_Operations = new ColumnOperation[0];
+  protected TableOperation[] m_Operations = new TableOperation[0];
 
   /**
    * Returns a string describing this object.
@@ -50,7 +50,7 @@ public class MultiColumnOperation
    */
   @Override
   public String globalInfo() {
-    return "Applies the specified column operations.";
+    return "Applies the specified table operations sequentially.";
   }
 
   /**
@@ -58,7 +58,7 @@ public class MultiColumnOperation
    *
    * @param value	the operations
    */
-  public void setOperations(ColumnOperation[] value) {
+  public void setOperations(TableOperation[] value) {
     m_Operations = value;
   }
 
@@ -67,7 +67,7 @@ public class MultiColumnOperation
    *
    * @return		the operations
    */
-  public ColumnOperation[] getOperations() {
+  public TableOperation[] getOperations() {
     return m_Operations;
   }
 
@@ -78,7 +78,7 @@ public class MultiColumnOperation
    *         explorer/experimenter gui
    */
   public String operationsTipText() {
-    return "The column operations to apply sequentially.";
+    return "The table operations to apply sequentially.";
   }
 
   /**
@@ -89,7 +89,7 @@ public class MultiColumnOperation
   public Enumeration listOptions() {
     Vector result = new Vector();
 
-    result.addElement(new Option("\tThe column operations to apply sequentially.\n"
+    result.addElement(new Option("\tThe table operations to apply sequentially.\n"
       + "\tCan be specified multiple times.\n"
       + "\t(default: none)",
       "operation", 1, "-operation <classname + options>"));
@@ -108,16 +108,16 @@ public class MultiColumnOperation
     String 		tmp;
     String		classname;
     String[]		tmpOptions;
-    List<ColumnOperation> 	ops;
+    List<TableOperation> 	ops;
 
     ops = new ArrayList<>();
     while (!(tmp = Utils.getOption("operation", options)).isEmpty()) {
       tmpOptions    = Utils.splitOptions(tmp);
       classname     = tmpOptions[0];
       tmpOptions[0] = "";
-      ops.add((ColumnOperation) Utils.forName(ColumnOperation.class, classname, tmpOptions));
+      ops.add((TableOperation) Utils.forName(TableOperation.class, classname, tmpOptions));
     }
-    setOperations(ops.toArray(new ColumnOperation[0]));
+    setOperations(ops.toArray(new TableOperation[0]));
 
     Utils.checkForRemainingOptions(options);
   }
@@ -132,7 +132,7 @@ public class MultiColumnOperation
 
     result = new ArrayList<String>();
 
-    for (ColumnOperation op: getOperations()) {
+    for (TableOperation op: getOperations()) {
       result.add("-operation");
       result.add(Utils.toCommandLine(op));
     }
@@ -141,20 +141,20 @@ public class MultiColumnOperation
   }
 
   /**
-   * Processes the columns.
+   * Processes the rows.
    *
    * @param table the table to work on
    * @return the updated table
    */
   @Override
-  public Table processColumns(Table table) {
+  public Table processTable(Table table) {
     Table	result;
     int		i;
 
     result = table;
 
     for (i = 0; i < m_Operations.length; i++)
-      result = m_Operations[i].processColumns(result);
+      result = m_Operations[i].processTable(result);
 
     return result;
   }

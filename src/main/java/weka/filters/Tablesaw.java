@@ -19,7 +19,7 @@
  *
  */
 
-package weka.filters.unsupervised.instance;
+package weka.filters;
 
 import tech.tablesaw.api.Table;
 import weka.core.Capabilities;
@@ -29,10 +29,8 @@ import weka.core.Option;
 import weka.core.RevisionUtils;
 import weka.core.TablesawUtils;
 import weka.core.Utils;
-import weka.core.tablesaw.RowOperation;
+import weka.core.tablesaw.TableOperation;
 import weka.core.tablesaw.PassThrough;
-import weka.filters.SimpleBatchFilter;
-import weka.filters.UnsupervisedFilter;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -42,7 +40,7 @@ import java.util.Vector;
 
 /**
  <!-- globalinfo-start -->
- * Applies the selected row operation to the data.
+ * Applies the selected table operation to the data.
  * <br><br>
  <!-- globalinfo-end -->
  *
@@ -50,7 +48,7 @@ import java.util.Vector;
  * Valid options are: <p>
  *
  * <pre> -operation &lt;classname + options&gt;
- *  The row operation to apply.
+ *  The table operation to apply.
  *  (default: weka.core.tablesaw.PassThrough)</pre>
  *
  * <pre> -output-debug-info
@@ -72,8 +70,8 @@ public class Tablesaw
   /** for serialization */
   private final static long serialVersionUID = 8349568310991609867L;
 
-  /** the row operation to use. */
-  protected RowOperation m_Operation = new PassThrough();
+  /** the table operation to use. */
+  protected TableOperation m_Operation = new PassThrough();
 
   /** the processed data. */
   protected transient Instances m_Processed;
@@ -86,7 +84,7 @@ public class Tablesaw
    */
   @Override
   public String globalInfo() {
-    return "Applies the selected row operation to the data.";
+    return "Applies the selected table operation to the data.";
   }
 
   /**
@@ -109,7 +107,7 @@ public class Tablesaw
     Vector<Option> result = new Vector<Option>();
 
     result.addElement(new Option(
-      "\tThe row operation to apply.\n"
+      "\tThe table operation to apply.\n"
         + "\t(default: " + PassThrough.class.getName() + ")",
       "operation", 1, "-operation <classname + options>"));
 
@@ -155,7 +153,7 @@ public class Tablesaw
       tmpOptions    = Utils.splitOptions(tmpStr);
       classname     = tmpOptions[0];
       tmpOptions[0] = "";
-      setOperation((RowOperation) Utils.forName(RowOperation.class, classname, tmpOptions));
+      setOperation((TableOperation) Utils.forName(Object.class, classname, tmpOptions));
     }
 
     super.setOptions(options);
@@ -164,20 +162,20 @@ public class Tablesaw
   }
 
   /**
-   * Sets the row operation to use.
+   * Sets the table operation to use.
    *
    * @param value the operation
    */
-  public void setOperation(RowOperation value) {
+  public void setOperation(TableOperation value) {
     m_Operation = value;
   }
 
   /**
-   * Gets the row operation in use.
+   * Gets the table operation in use.
    *
    * @return the operation
    */
-  public RowOperation getOperation() {
+  public TableOperation getOperation() {
     return m_Operation;
   }
 
@@ -188,12 +186,12 @@ public class Tablesaw
    *         explorer/experimenter gui
    */
   public String operationTipText() {
-    return "The row operation to apply.";
+    return "The table operation to apply.";
   }
 
   /**
    * Returns the Capabilities of this filter.
-   * 
+   *
    * @return the capabilities of this object
    * @see Capabilities
    */
@@ -231,8 +229,8 @@ public class Tablesaw
     Table	tableIn;
     Table	tableOut;
 
-    tableIn     = TablesawUtils.instancesToTable(input);
-    tableOut    = m_Operation.processRows(tableIn);
+    tableIn  = TablesawUtils.instancesToTable(input);
+    tableOut = m_Operation.processTable(tableIn);
 
     return TablesawUtils.tableToInstances(tableOut);
   }
@@ -243,7 +241,7 @@ public class Tablesaw
    * hasImmediateOutputFormat() returns false, then this method will called from
    * batchFinished() after the call of preprocess(Instances), in which, e.g.,
    * statistics for the actual processing step can be gathered.
-   * 
+   *
    * @param inputFormat the input format to base the output format on
    * @return the output format
    * @throws Exception in case the determination goes wrong
