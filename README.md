@@ -39,6 +39,7 @@ operation:
   * `PassThrough` - dummy, just passes through the data
   * `SampleN` - generates a sub-sample of size N
   * `SampleX` - generates a sub-sample of proportion X (0.0-1.0)
+  * `Sort` - sorts the data using specified columns (ascending or descending)
   * `MultiTableOperation` - applies all specified table operations sequentially
   * ...
 
