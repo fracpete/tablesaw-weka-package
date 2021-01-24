@@ -37,6 +37,8 @@ The `weka.filters.Tablesaw` filter allows you to apply the following table
 operation:
 
   * `PassThrough` - dummy, just passes through the data
+  * `RemoveColumns` - removes specified columns
+  * `RetainColumns` - keeps specified columns
   * `SampleN` - generates a sub-sample of size N
   * `SampleX` - generates a sub-sample of proportion X (0.0-1.0)
   * `Sort` - sorts the data using specified columns (ascending or descending)
