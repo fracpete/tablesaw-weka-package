@@ -28,6 +28,14 @@ import tech.tablesaw.api.StringColumn;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.api.TextColumn;
 import tech.tablesaw.columns.Column;
+import tech.tablesaw.columns.dates.DateColumnType;
+import tech.tablesaw.columns.datetimes.DateTimeColumnType;
+import tech.tablesaw.columns.numbers.DoubleColumnType;
+import tech.tablesaw.columns.numbers.FloatColumnType;
+import tech.tablesaw.columns.numbers.IntColumnType;
+import tech.tablesaw.columns.numbers.LongColumnType;
+import tech.tablesaw.columns.numbers.ShortColumnType;
+import tech.tablesaw.columns.times.TimeColumnType;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -50,15 +58,15 @@ public class TablesawUtils {
    * @return		true if numeric
    */
   public static boolean isNumeric(ColumnType type) {
-    if (type == ColumnType.DOUBLE)
+    if (type instanceof DoubleColumnType)
       return true;
-    if (type == ColumnType.FLOAT)
+    if (type instanceof FloatColumnType)
       return true;
-    if (type == ColumnType.SHORT)
+    if (type instanceof ShortColumnType)
       return true;
-    if (type == ColumnType.INTEGER)
+    if (type instanceof IntColumnType)
       return true;
-    if (type == ColumnType.LONG)
+    if (type instanceof LongColumnType)
       return true;
     return false;
   }
@@ -70,11 +78,11 @@ public class TablesawUtils {
    * @return		true if date-like
    */
   public static boolean isDateLike(ColumnType type) {
-    if (type == ColumnType.LOCAL_TIME)
+    if (type instanceof TimeColumnType)
       return true;
-    if (type == ColumnType.LOCAL_DATE)
+    if (type instanceof DateColumnType)
       return true;
-    if (type == ColumnType.LOCAL_DATE_TIME)
+    if (type instanceof DateTimeColumnType)
       return true;
     return false;
   }
