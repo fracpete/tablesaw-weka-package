@@ -31,22 +31,15 @@ Copy all jars from `./out/target/lib` into the projects `lib` directory.
   TODO
   ```
   
-### Filters
+### Filter
 
-The following batch filters and their operations are available:
-
-* `weka.filters.unsupervised.attribute.Tablesaw`
-
-  * `PassThrough` - dummy, just passes through the data
-  * `MultiColumnOperation` - applies all specified column operations sequentially
-  * ...
-  
-* `weka.filters.unsupervised.instance.Tablesaw`
+The `weka.filters.Tablesaw` filter allows you to apply the following table
+operation:
 
   * `PassThrough` - dummy, just passes through the data
   * `SampleN` - generates a sub-sample of size N
   * `SampleX` - generates a sub-sample of proportion X (0.0-1.0)
-  * `MultiRowOperation` - applies all specified row operations sequentially
+  * `MultiTableOperation` - applies all specified table operations sequentially
   * ...
 
 **Note:** Since the data needs to be converted into Tablesaw's dataframe format,
