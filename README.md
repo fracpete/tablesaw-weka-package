@@ -36,6 +36,8 @@ Copy all jars from `./out/target/lib` into the projects `lib` directory.
 The `weka.filters.Tablesaw` filter allows you to apply the following table
 operation:
 
+  * `First` - returns the first X number of rows
+  * `Last` - returns the last X number of rows
   * `PassThrough` - dummy, just passes through the data
   * `RemoveColumns` - removes specified columns
   * `RetainColumns` - keeps specified columns
