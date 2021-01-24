@@ -38,6 +38,7 @@ operation:
 
   * `First` - returns the first X number of rows
   * `Last` - returns the last X number of rows
+  * `MissingValueCounts` - counts the missing values (outputs single row)
   * `PassThrough` - dummy, just passes through the data
   * `RemoveColumns` - removes specified columns
   * `RetainColumns` - keeps specified columns
