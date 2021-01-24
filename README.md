@@ -36,6 +36,7 @@ Copy all jars from `./out/target/lib` into the projects `lib` directory.
 The `weka.filters.Tablesaw` filter allows you to apply the following table
 operation:
 
+  * `CountBy` - generates a table with two columns, the first with the name of the categorical value and the second with the count for that value.
   * `First` - returns the first X number of rows
   * `Last` - returns the last X number of rows
   * `MissingValueCounts` - counts the missing values (outputs single row)
