@@ -40,6 +40,7 @@ operation:
   * `First` - returns the first X number of rows
   * `Last` - returns the last X number of rows
   * `MissingValueCounts` - counts the missing values (outputs single row)
+  * `MultiTableOperation` - applies all specified table operations sequentially
   * `PassThrough` - dummy, just passes through the data
   * `RemoveColumns` - removes specified columns
   * `RetainColumns` - keeps specified columns
@@ -49,7 +50,7 @@ operation:
   * `SampleSplit` - splits data into two and returns either first or second part
   * `SampleX` - generates a sub-sample of proportion X (0.0-1.0)
   * `Sort` - sorts the data using specified columns (ascending or descending)
-  * `MultiTableOperation` - applies all specified table operations sequentially
+  * `Summary` - generates a summary for the specified column
   * ...
 
 **Note:** Since the data needs to be converted into Tablesaw's dataframe format,
