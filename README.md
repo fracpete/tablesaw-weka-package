@@ -56,7 +56,7 @@ the data may still get modified (e.g., change in attribute types), despite the
 
 ## Releases
 
-* [2021.3.3](https://github.com/fracpete/matlab-weka-package/releases/download/v2021.3.3/tablesaw-2021.3.3.zip)
+* [2021.3.3](https://github.com/fracpete/tablesaw-weka-package/releases/download/v2021.3.3/tablesaw-2021.3.3.zip)
 
 
 ## Maven
