@@ -110,7 +110,7 @@ public class MultiTableOperation
     String[]		tmpOptions;
     List<TableOperation> 	ops;
 
-    ops = new ArrayList<>();
+    ops = new ArrayList<TableOperation>();
     while (!(tmp = Utils.getOption("operation", options)).isEmpty()) {
       tmpOptions    = Utils.splitOptions(tmp);
       classname     = tmpOptions[0];
