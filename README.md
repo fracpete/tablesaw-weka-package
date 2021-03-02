@@ -21,20 +21,17 @@ Copy all jars from `./out/target/lib` into the projects `lib` directory.
 
 * Loader
 
-  ```
-  TODO
-  ``` 
+  * `TableSawCsvLoader` - for loading CSV files
   
 * Saver
 
-  ```
-  TODO
-  ```
+  * `TableSawCsvSaver` - for saving CSV files
+
   
 ### Filter
 
 The `weka.filters.Tablesaw` filter allows you to apply the following table
-operation:
+operations:
 
   * `CountBy` - generates a table with two columns, the first with the name of the categorical value and the second with the count for that value.
   * `First` - returns the first X number of rows
@@ -51,7 +48,6 @@ operation:
   * `SampleX` - generates a sub-sample of proportion X (0.0-1.0)
   * `Sort` - sorts the data using specified columns (ascending or descending)
   * `Summary` - generates a summary for the specified column
-  * ...
 
 **Note:** Since the data needs to be converted into Tablesaw's dataframe format,
 the data may still get modified (e.g., change in attribute types), despite the 
@@ -60,7 +56,7 @@ the data may still get modified (e.g., change in attribute types), despite the
 
 ## Releases
 
-* [????.??.??](https://github.com/fracpete/matlab-weka-package/releases/download/v????.??.??/tablesaw-????.??.??.zip)
+* [2021.3.3](https://github.com/fracpete/matlab-weka-package/releases/download/v2021.3.3/tablesaw-2021.3.3.zip)
 
 
 ## Maven
@@ -71,7 +67,7 @@ Use the following dependency in your `pom.xml`:
     <dependency>
       <groupId>com.github.fracpete</groupId>
       <artifactId>tablesaw-weka-package</artifactId>
-      <version>????.??.??</version>
+      <version>2021.3.3</version>
       <type>jar</type>
       <exclusions>
         <exclusion>
