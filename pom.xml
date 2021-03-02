@@ -5,7 +5,7 @@
 
   <groupId>com.github.fracpete</groupId>
   <artifactId>tablesaw-weka-package</artifactId>
-  <version>2021.3.3-SNAPSHOT</version>
+  <version>2021.3.3</version>
   <packaging>jar</packaging>
 
   <name>tablesaw</name>
